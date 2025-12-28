@@ -5,7 +5,7 @@ from odoo import models, fields, api, _
 from odoo.exceptions import ValidationError
 from odoo.tools import DEFAULT_SERVER_DATETIME_FORMAT as DATETIME_FORMAT
 
- class AccountMove(models.Model):
+class AccountMove(models.Model):
     _inherit = 'account.move'
 
     def _get_extra_fields(self):
