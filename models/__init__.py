@@ -1,4 +1,4 @@
 # -*- coding: utf-8 -*-
-from . import entry
-from . import checkup
-from . import work_order
+from . import extra_field
+from . import sale_order
+from . import account_move

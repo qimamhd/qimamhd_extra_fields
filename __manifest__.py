@@ -20,15 +20,13 @@
 
     # always loaded
     'data': [
-        # 'security/ir.model.access.csv',
-        'security/security.xml',
+        'security/ir.model.access.csv',
+        # 'security/security.xml',
      
-        'views/entry.xml',
-        'views/checkup.xml',
-        'views/work_order.xml',
-        'views/register_payment.xml',
-        'report/car_checkup_report.xml',
-        'report/work_order_sum_report.xml',
+        'views/extra_field.xml',
+        'views/sale_order.xml',
+        'views/account_move.xml',
+        
 
         #'wizards/recap.xml',
     ],

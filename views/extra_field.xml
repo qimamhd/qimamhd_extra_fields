@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+   <record id="view_sale_extra_field_config_form" model="ir.ui.view">
+    <field name="name">sale.extra.field.config.form</field>
+    <field name="model">sale.extra.field.config</field>
+    <field name="arch" type="xml">
+        <form>
+            <sheet>
+                <group>
+                    <field name="name"/>
+                    <field name="field_type"/>
+                    <field name="default_label"/>
+                    <field name="custom_label"/>
+                    <field name="visible"/>
+                    <field name="required"/>
+                    <field name="selection_values"/>
+                </group>
+            </sheet>
+        </form>
+    </field>
+</record>
+
+
+</odoo>

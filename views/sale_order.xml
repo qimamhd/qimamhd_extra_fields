@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+	<record id="view_sale_order_form_extra_fields_tab" model="ir.ui.view">
+		<field name="name">sale.order.form.extra.fields.tab</field>
+		<field name="model">sale.order</field>
+		<field name="inherit_id" ref="sale.view_order_form"/>
+		<field name="arch" type="xml">
+			<xpath expr="//notebook" position="inside">
+				<page string="Extra Fields" name="extra_fields_tab">
+					<group>
+						<t t-foreach="env['sale.extra.field.config'].search([('visible','=',True)])" t-as="ef">
+							<t t-if="ef.field_type == 'char'">
+								<field name="ef.name" string="t-esc='ef.custom_label or ef.default_label'"/>
+							</t>
+							<t t-if="ef.field_type == 'float'">
+								<field name="ef.name" string="t-esc='ef.custom_label or ef.default_label'"/>
+							</t>
+							<t t-if="ef.field_type == 'boolean'">
+								<field name="ef.name" string="t-esc='ef.custom_label or ef.default_label'"/>
+							</t>
+							<t t-if="ef.field_type == 'date'">
+								<field name="ef.name" string="t-esc='ef.custom_label or ef.default_label'"/>
+							</t>
+							<t t-if="ef.field_type == 'selection'">
+								<field name="ef.name" string="t-esc='ef.custom_label or ef.default_label'"/>
+							</t>
+						</t>
+					</group>
+				</page>
+			</xpath>
+		</field>
+	</record>
+
+
+</odoo>
