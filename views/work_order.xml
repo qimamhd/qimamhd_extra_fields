@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <record id="work_procedure_extend" model="ir.ui.view">
+		<field name="name">work_procedure_extend</field>
+		<field name="model">mizan.car.work.procedure.master</field>
+		<field name="inherit_id" ref="qimamhd_mizan_car_13.work_procedure_form_view" />
+		<field name="arch" type="xml">
+
+            <div class="oe_button_box" name="button_box">
+ 					<button class="oe_stat_button" string="فاتورة المبيعات" name="call_invoice"
+                     type="object" icon="fa-bars" attrs="{'invisible':[('create_invoice_manually_id','=',False)]}">
+					  
+						 
+ 					</button>
+
+			</div>
+            <xpath expr="//field[@name='create_date']" position="attributes">
+				<attribute name="readonly">0</attribute>
+			</xpath>
+          
+          
+            <xpath expr="//field[@name='create_date']" position="attributes">
+				<attribute name="attrs">{'readonly':['|', ('is_user_sale_man', '=', False),('state','in',['execute_completed','cancel_order'])]}</attribute>
+			</xpath>
+
+			<xpath expr = "//field[@name = 'vin_no']"  position="after">
+                   <field name="drum_counter" attrs="{'readonly':['|','|','|',('create_invoice_manually_id','!=', False), ('is_user_sale_man', '=', False),('state','in',['execute_request','execute_completed','cancel_order','work_order_started'])]}" />
+                   <field name="drum_counter_exit" attrs="{'readonly':['|','|','|',('create_invoice_manually_id','!=', False), ('is_user_sale_man', '=', False) ]}" />
+                   
+            </xpath>
+
+			<xpath expr = "//field[@name = 'lines_spare_parts']/tree/field[@name = 'qty']"  position="attributes">
+                  
+                         <attribute name="required">0</attribute>
+                    <attribute name="optional">hide</attribute>
+            </xpath>
+          <xpath expr="//button[@name='call_confirm_message_dailog']" position="attributes">
+                        <attribute name="string">انشاء الفاتورة</attribute>
+           </xpath>
+
+		</field>
+	</record>
+
+
+</odoo>

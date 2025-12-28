@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+      <record id="mizan_payment_extend_view" model="ir.ui.view">
+            <field name="name">mizan.payment.view_extend</field>
+            <field name="model">mizan.register.payment</field>
+            <field name="inherit_id" ref="qimamhd_mizan_car_13.mizan_payment_view" />
+            <field name="arch" type="xml">
+
+                <xpath expr="//button[@name='create_payment']" position="after">
+                    <button name="cancel_payment_btn"
+                            string="الغاء الدفع"
+                            type="object"
+                            class="oe_highlight"
+                            groups="qimamhd_mizan_marahel_extend.group_cancel_register_payment"
+                            attrs="{'invisible':[('state','in',['cancel','draft'])]}"
+                            confirm="تاكيد .. هل انت متاكد من الغاء الدفع " />
+                        <button type="object"
+                                name="call_payments"
+                                class="oe_stat_button"
+                                string="سند الدفع"
+                                icon="fa-history">
+                        </button>
+                </xpath>
+
+                
+
+            </field>
+        </record>
+
+    </data>
+
+</odoo>

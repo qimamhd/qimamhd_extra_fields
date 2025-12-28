@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <record id="entry_card_form_extend" model="ir.ui.view">
+		<field name="name">entry_card_form_extend</field>
+		     <field name="model">mizan.car.entry.card.master</field>
+		<field name="inherit_id" ref="qimamhd_mizan_car_13.entry_card_form_view" />
+		<field name="arch" type="xml">
+
+		 
+            <xpath expr="//field[@name='drum_counter']" position="attributes">
+                <attribute name="string">عداد وقت الدخول</attribute>
+            </xpath>
+			<xpath expr="//button[@name='call_checkup_procedure']" position="attributes">
+				<attribute name="invisible">1</attribute>
+			</xpath>
+ 			<xpath expr="//button[@name='return_to_modify']" position="attributes">
+			 
+				<attribute name="groups">qimamhd_mizan_marahel_extend.group_rtn_to_draft_and_cancel_priv</attribute>
+				<attribute name="attrs">{'invisible':[('state','not in',['confirm','execute_started','work_order_started','execute_completed'])]}</attribute>
+			</xpath>
+			
+			<xpath expr="//field[@name='order_date']" position="attributes">
+				<attribute name="attrs">{'readonly':['|', ('is_user_sale_man', '=', False),('state','in',['execute_completed','cancel_order'])]}</attribute>
+			</xpath>
+		</field>
+	</record>
+
+
+</odoo>
