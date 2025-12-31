@@ -5,27 +5,27 @@ from odoo import models, fields, api, _
 from odoo.exceptions import ValidationError
 from odoo.tools import DEFAULT_SERVER_DATETIME_FORMAT as DATETIME_FORMAT
 
+ 
 class AccountMove(models.Model):
     _inherit = 'account.move'
 
-    def _get_extra_fields(self):
-        return self.env['sale.extra.field.config'].search([('visible', '=', True)])
-
-    def _compute_extra_values(self):
-        for move in self:
-            for field in self._get_extra_fields():
-                if field.field_type == 'char':
-                    move[field.name] = ''
-                elif field.field_type == 'float':
-                    move[field.name] = 0.0
-                elif field.field_type == 'boolean':
-                    move[field.name] = False
-                elif field.field_type == 'date':
-                    move[field.name] = fields.Date.today()
-
+    x_extra_text_1 = fields.Char()
+    x_extra_text_2 = fields.Char()
+    x_extra_number_1 = fields.Float()
+    x_extra_date_1 = fields.Date()
 
     @api.model
-    def default_get(self, fields_list):
-        res = super(AccountMove, self).default_get(fields_list)
-        self._compute_extra_values()  # تهيئة القيم الافتراضية قبل العرض
+    def fields_view_get(self, view_id=None, view_type='form', toolbar=False, submenu=False):
+        res = super().fields_view_get(view_id, view_type, toolbar, submenu)
+
+        if view_type == 'form':
+            settings = self.env['extra.field.setting'].search([])
+            for s in settings:
+                if s.field_name in res['fields']:
+                    res['fields'][s.field_name]['string'] = (
+                        s.label or res['fields'][s.field_name]['string']
+                    )
+                    res['fields'][s.field_name]['required'] = s.required
+                    res['fields'][s.field_name]['invisible'] = not s.visible
+
         return res

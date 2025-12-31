@@ -8,23 +8,12 @@
 			<xpath expr="//notebook" position="inside">
 				<page string="Extra Fields" name="extra_fields_tab">
 					<group>
-						<t t-foreach="env['sale.extra.field.config'].search([('visible','=',True)])" t-as="ef">
-							<t t-if="ef.field_type == 'char'">
-								<field name="ef.name" string="t-esc='ef.custom_label or ef.default_label'"/>
-							</t>
-							<t t-if="ef.field_type == 'float'">
-								<field name="ef.name" string="t-esc='ef.custom_label or ef.default_label'"/>
-							</t>
-							<t t-if="ef.field_type == 'boolean'">
-								<field name="ef.name" string="t-esc='ef.custom_label or ef.default_label'"/>
-							</t>
-							<t t-if="ef.field_type == 'date'">
-								<field name="ef.name" string="t-esc='ef.custom_label or ef.default_label'"/>
-							</t>
-							<t t-if="ef.field_type == 'selection'">
-								<field name="ef.name" string="t-esc='ef.custom_label or ef.default_label'"/>
-							</t>
-						</t>
+				
+						<field name="x_extra_text_1"/>
+						<field name="x_extra_text_2"/>
+						<field name="x_extra_number_1"/>
+						<field name="x_extra_date_1"/>
+							 
 					</group>
 				</page>
 			</xpath>

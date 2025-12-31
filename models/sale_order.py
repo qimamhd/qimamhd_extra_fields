@@ -5,13 +5,13 @@ from odoo import models, fields, api, _
 from odoo.exceptions import ValidationError
 from odoo.tools import DEFAULT_SERVER_DATETIME_FORMAT as DATETIME_FORMAT
 
- 
 class SaleOrder(models.Model):
     _inherit = 'sale.order'
 
-    def _get_extra_fields(self):
-        fields = self.env['sale.extra.field.config'].search([('visible','=',True)])
-        return fields
+    x_extra_text_1 = fields.Char()
+    x_extra_text_2 = fields.Char()
+    x_extra_number_1 = fields.Float()
+    x_extra_date_1 = fields.Date()
 
     def _compute_extra_values(self):
         for order in self:
@@ -26,14 +26,29 @@ class SaleOrder(models.Model):
 
 
     @api.model
-    def default_get(self, fields_list):
-        res = super(SaleOrder, self).default_get(fields_list)
-        self._compute_extra_values()
+    def fields_view_get(self, view_id=None, view_type='form', toolbar=False, submenu=False):
+        res = super().fields_view_get(view_id, view_type, toolbar, submenu)
+
+        if view_type == 'form':
+            settings = self.env['extra.field.setting'].search([])
+            for s in settings:
+                if s.field_name in res['fields']:
+                    res['fields'][s.field_name]['string'] = (
+                        s.label or res['fields'][s.field_name]['string']
+                    )
+                    res['fields'][s.field_name]['required'] = s.required
+                    res['fields'][s.field_name]['invisible'] = not s.visible
+
         return res
 
     def _prepare_invoice(self):
-        invoice_vals = super(SaleOrder, self)._prepare_invoice()
-        extra_fields = self.env['sale.extra.field.config'].search([('visible', '=', True)])
-        for field in extra_fields:
-            invoice_vals[field.name] = self[field.name]
-        return invoice_vals
+        vals = super()._prepare_invoice()
+        fields = [
+            'x_extra_text_1',
+            'x_extra_text_2',
+            'x_extra_number_1',
+            'x_extra_date_1',
+        ]
+        for f in fields:
+            vals[f] = getattr(self, f)
+        return vals
