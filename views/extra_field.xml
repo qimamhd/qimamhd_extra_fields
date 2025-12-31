@@ -7,13 +7,12 @@
             <form>
                 <sheet>
                     <group>
-                        <field name="name"/>
-                        <field name="field_type"/>
-                        <field name="default_label"/>
-                        <field name="custom_label"/>
+                        <field name="field_name"/>
+                        <field name="label"/>
+                      
                         <field name="visible"/>
                         <field name="required"/>
-                        <field name="selection_values"/>
+                       
                     </group>
                 </sheet>
             </form>
@@ -24,13 +23,11 @@
         <field name="model">sale.extra.field.config</field>
         <field name="arch" type="xml">
             <tree>
-                <field name="name"/>
-                <field name="field_type"/>
-                <field name="default_label"/>
-                <field name="custom_label"/>
+                <field name="field_name"/>
+                <field name="label"/>
+                
                 <field name="visible"/>
                 <field name="required"/>
-                <field name="selection_values"/>
             </tree>
         </field>
     </record>
