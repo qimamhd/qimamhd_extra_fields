@@ -44,13 +44,12 @@ class AccountMove(models.Model):
     x_extra_boolean_4 = fields.Boolean()
     x_extra_boolean_5 = fields.Boolean()
 
-    # ======================
-    # Helpers for visibility / required
-    # ======================
-   @api.depends('x_extra_text_1', 'x_extra_text_2', 'x_extra_text_3', 'x_extra_text_4', 'x_extra_text_5',
+    @api.depends(
+        'x_extra_text_1', 'x_extra_text_2', 'x_extra_text_3', 'x_extra_text_4', 'x_extra_text_5',
         'x_extra_number_1', 'x_extra_number_2', 'x_extra_number_3', 'x_extra_number_4', 'x_extra_number_5',
         'x_extra_date_1', 'x_extra_date_2', 'x_extra_date_3', 'x_extra_date_4', 'x_extra_date_5',
-        'x_extra_boolean_1', 'x_extra_boolean_2', 'x_extra_boolean_3', 'x_extra_boolean_4', 'x_extra_boolean_5')
+        'x_extra_boolean_1', 'x_extra_boolean_2', 'x_extra_boolean_3', 'x_extra_boolean_4', 'x_extra_boolean_5'
+    )
     def _compute_extra_flags(self):
         configs = self.env['sale.extra.field.config'].search([])
         config_map = {c.field_name: c for c in configs}
@@ -65,6 +64,7 @@ class AccountMove(models.Model):
 
                 if required_field in rec._fields:
                     rec[required_field] = bool(config.required)
+
 
     # Define helpers fields
     x_extra_text_1_visible = fields.Boolean(compute='_compute_extra_flags')
