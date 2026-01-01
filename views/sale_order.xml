@@ -1,58 +1,57 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <odoo>
-	<record id="view_sale_order_form_extra_fields_tab" model="ir.ui.view">
-		<field name="name">sale.order.form.extra.fields.tab</field>
-		<field name="model">sale.order</field>
-		<field name="inherit_id" ref="sale.view_order_form"/>
-		<field name="arch" type="xml">
-			<xpath expr="//notebook" position="inside">
-				<page string="Extra Fields" name="extra_fields_tab">
-					  <group>
-						<field name="x_extra_text_1_visible" invisible="1"/>
-						<field name="x_extra_text_2_visible" invisible="1"/>
-						<field name="x_extra_text_3_visible" invisible="1"/>
-						<field name="x_extra_text_4_visible" invisible="1"/>
-						<field name="x_extra_text_5_visible" invisible="1"/>
-						<field name="x_extra_text_1_required" invisible="1"/>
-						<field name="x_extra_text_2_required" invisible="1"/>
-						<field name="x_extra_text_3_required" invisible="1"/>
-						<field name="x_extra_text_4_required" invisible="1"/>
-						<field name="x_extra_text_5_required" invisible="1"/>
+    <record id="view_sale_order_form_extra_fields_tab" model="ir.ui.view">
+        <field name="name">sale.order.form.extra.fields.tab</field>
+        <field name="model">sale.order</field>
+        <field name="inherit_id" ref="sale.view_order_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//notebook" position="inside">
+                <page string="Extra Fields" name="extra_fields_tab">
+                    <group>
+                        <!-- Helpers invisible for visible/required flags -->
+                        <field name="x_extra_text_1_visible" invisible="1"/>
+                        <field name="x_extra_text_2_visible" invisible="1"/>
+                        <field name="x_extra_text_3_visible" invisible="1"/>
+                        <field name="x_extra_text_4_visible" invisible="1"/>
+                        <field name="x_extra_text_5_visible" invisible="1"/>
+                        <field name="x_extra_text_1_required" invisible="1"/>
+                        <field name="x_extra_text_2_required" invisible="1"/>
+                        <field name="x_extra_text_3_required" invisible="1"/>
+                        <field name="x_extra_text_4_required" invisible="1"/>
+                        <field name="x_extra_text_5_required" invisible="1"/>
 
-						<field name="x_extra_number_1_visible" invisible="1"/>
-						<field name="x_extra_number_2_visible" invisible="1"/>
-						<field name="x_extra_number_3_visible" invisible="1"/>
-						<field name="x_extra_number_4_visible" invisible="1"/>
-						<field name="x_extra_number_5_visible" invisible="1"/>
-						<field name="x_extra_number_1_required" invisible="1"/>
-						<field name="x_extra_number_2_required" invisible="1"/>
-						<field name="x_extra_number_3_required" invisible="1"/>
-						<field name="x_extra_number_4_required" invisible="1"/>
-						<field name="x_extra_number_5_required" invisible="1"/>
+                        <field name="x_extra_number_1_visible" invisible="1"/>
+                        <field name="x_extra_number_2_visible" invisible="1"/>
+                        <field name="x_extra_number_3_visible" invisible="1"/>
+                        <field name="x_extra_number_4_visible" invisible="1"/>
+                        <field name="x_extra_number_5_visible" invisible="1"/>
+                        <field name="x_extra_number_1_required" invisible="1"/>
+                        <field name="x_extra_number_2_required" invisible="1"/>
+                        <field name="x_extra_number_3_required" invisible="1"/>
+                        <field name="x_extra_number_4_required" invisible="1"/>
+                        <field name="x_extra_number_5_required" invisible="1"/>
 
+                        <field name="x_extra_date_1_visible" invisible="1"/>
+                        <field name="x_extra_date_2_visible" invisible="1"/>
+                        <field name="x_extra_date_3_visible" invisible="1"/>
+                        <field name="x_extra_date_4_visible" invisible="1"/>
+                        <field name="x_extra_date_5_visible" invisible="1"/>
+                        <field name="x_extra_date_1_required" invisible="1"/>
+                        <field name="x_extra_date_2_required" invisible="1"/>
+                        <field name="x_extra_date_3_required" invisible="1"/>
+                        <field name="x_extra_date_4_required" invisible="1"/>
+                        <field name="x_extra_date_5_required" invisible="1"/>
 
-						<field name="x_extra_date_1_visible" invisible="1"/>
-						<field name="x_extra_date_2_visible" invisible="1"/>
-						<field name="x_extra_date_3_visible" invisible="1"/>
-						<field name="x_extra_date_4_visible" invisible="1"/>
-						<field name="x_extra_date_5_visible" invisible="1"/>
-						<field name="x_extra_date_1_required" invisible="1"/>
-						<field name="x_extra_date_2_required" invisible="1"/>
-						<field name="x_extra_date_3_required" invisible="1"/>
-						<field name="x_extra_date_4_required" invisible="1"/>
-						<field name="x_extra_date_5_required" invisible="1"/>
-
-						<field name="x_extra_boolean_1_visible" invisible="1"/>
-						<field name="x_extra_boolean_2_visible" invisible="1"/>
-						<field name="x_extra_boolean_3_visible" invisible="1"/>
-						<field name="x_extra_boolean_4_visible" invisible="1"/>
-						<field name="x_extra_boolean_5_visible" invisible="1"/>
-						<field name="x_extra_boolean_1_required" invisible="1"/>
-						<field name="x_extra_boolean_2_required" invisible="1"/>
-						<field name="x_extra_boolean_3_required" invisible="1"/>
-						<field name="x_extra_boolean_4_required" invisible="1"/>
-						<field name="x_extra_boolean_5_required" invisible="1"/>
-
+                        <field name="x_extra_boolean_1_visible" invisible="1"/>
+                        <field name="x_extra_boolean_2_visible" invisible="1"/>
+                        <field name="x_extra_boolean_3_visible" invisible="1"/>
+                        <field name="x_extra_boolean_4_visible" invisible="1"/>
+                        <field name="x_extra_boolean_5_visible" invisible="1"/>
+                        <field name="x_extra_boolean_1_required" invisible="1"/>
+                        <field name="x_extra_boolean_2_required" invisible="1"/>
+                        <field name="x_extra_boolean_3_required" invisible="1"/>
+                        <field name="x_extra_boolean_4_required" invisible="1"/>
+                        <field name="x_extra_boolean_5_required" invisible="1"/>
 
                         <!-- TEXT -->
                         <field name="x_extra_text_1" attrs="{'invisible':[('x_extra_text_1_visible','=',False)],'required':[('x_extra_text_1_required','=',True)]}"/>
@@ -81,12 +80,9 @@
                         <field name="x_extra_boolean_3" attrs="{'invisible':[('x_extra_boolean_3_visible','=',False)],'required':[('x_extra_boolean_3_required','=',True)]}"/>
                         <field name="x_extra_boolean_4" attrs="{'invisible':[('x_extra_boolean_4_visible','=',False)],'required':[('x_extra_boolean_4_required','=',True)]}"/>
                         <field name="x_extra_boolean_5" attrs="{'invisible':[('x_extra_boolean_5_visible','=',False)],'required':[('x_extra_boolean_5_required','=',True)]}"/>
-
                     </group>
-				</page>
-			</xpath>
-		</field>
-	</record>
-
-
+                </page>
+            </xpath>
+        </field>
+    </record>
 </odoo>
