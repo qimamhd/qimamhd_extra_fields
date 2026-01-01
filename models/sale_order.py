@@ -15,7 +15,7 @@ class SaleOrder(models.Model):
     x_extra_char_1_visible = fields.Boolean(compute='_compute_extra_flags', store=False)
     x_extra_char_1_required = fields.Boolean(compute='_compute_extra_flags', store=False)
 
-
+    @api.depends('x_extra_text_1')
     def _compute_extra_flags(self):
         configs = self.env['sale.extra.field.config'].search([])
         config_map = {c.field_name: c for c in configs}
