@@ -109,18 +109,14 @@ class AccountMove(models.Model):
     x_extra_boolean_5_visible = fields.Boolean(compute='_compute_extra_flags')
     x_extra_boolean_5_required = fields.Boolean(compute='_compute_extra_flags')
 
-    # ====================================
-    # نقل القيم من امر البيع
-    # ====================================
+    
     @api.model
-    def create_from_sale_order(self, sale_order):
-        vals = {}
-        extra_fields = [
-            'x_extra_text_1','x_extra_text_2','x_extra_text_3','x_extra_text_4','x_extra_text_5',
-            'x_extra_number_1','x_extra_number_2','x_extra_number_3','x_extra_number_4','x_extra_number_5',
-            'x_extra_date_1','x_extra_date_2','x_extra_date_3','x_extra_date_4','x_extra_date_5',
-            'x_extra_boolean_1','x_extra_boolean_2','x_extra_boolean_3','x_extra_boolean_4','x_extra_boolean_5'
-        ]
-        for f in extra_fields:
-            vals[f] = getattr(sale_order, f)
-        return vals
+    def fields_view_get(self, view_id=None, view_type='form', toolbar=False, submenu=False):
+        res = super().fields_view_get(view_id, view_type, toolbar, submenu)
+
+        if view_type == 'form':
+            configs = self.env['sale.extra.field.config'].search([])
+            for c in configs:
+                if c.field_name in res['fields']:
+                    res['fields'][c.field_name]['string'] = c.label
+        return res
