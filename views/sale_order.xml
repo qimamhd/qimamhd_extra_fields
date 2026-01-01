@@ -83,11 +83,7 @@
 							<field name="x_extra_boolean_3" attrs="{'invisible':[('x_extra_boolean_3_visible','=',False)],'required':[('x_extra_boolean_3_required','=',True)]}"/>
 							<field name="x_extra_boolean_4" attrs="{'invisible':[('x_extra_boolean_4_visible','=',False)],'required':[('x_extra_boolean_4_required','=',True)]}"/>
 							<field name="x_extra_boolean_5" attrs="{'invisible':[('x_extra_boolean_5_visible','=',False)],'required':[('x_extra_boolean_5_required','=',True)]}"/>
-
 						</group>
-                   
-                      
-                       
                     </group>
                 </page>
             </xpath>
