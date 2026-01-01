@@ -30,7 +30,7 @@ class SaleOrder(models.Model):
     x_extra_boolean_1_visible = fields.Boolean(compute='_compute_extra_flags')
     x_extra_boolean_1_required = fields.Boolean(compute='_compute_extra_flags')
    
-    @api.depends('id')
+    @api.depends('x_extra_text_1')
     def _compute_extra_flags(self):
         configs = self.env['sale.extra.field.config'].search([])
         config_map = {c.field_name: c for c in configs}
