@@ -6,7 +6,7 @@
         <field name="inherit_id" ref="account.view_move_form"/>
         <field name="arch" type="xml">
             <xpath expr="//notebook" position="inside">
-                <page string="Extra Fields">
+                <page  string="الحقول الاضافية">
                     <group>
                         <!-- Helpers invisible for visible/required flags -->
                         <field name="x_extra_text_1_visible" invisible="1"/>
@@ -52,7 +52,7 @@
                         <field name="x_extra_boolean_3_required" invisible="1"/>
                         <field name="x_extra_boolean_4_required" invisible="1"/>
                         <field name="x_extra_boolean_5_required" invisible="1"/>
-
+					
                         <!-- TEXT -->
                         <field name="x_extra_text_1" attrs="{'invisible':[('x_extra_text_1_visible','=',False)],'required':[('x_extra_text_1_required','=',True)]}"/>
                         <field name="x_extra_text_2" attrs="{'invisible':[('x_extra_text_2_visible','=',False)],'required':[('x_extra_text_2_required','=',True)]}"/>

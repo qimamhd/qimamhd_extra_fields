@@ -40,3 +40,9 @@ class SaleExtraFieldConfig(models.Model):
     label = fields.Char(string='Label',required=True)
     visible = fields.Boolean(default=True)
     required = fields.Boolean(default=False)
+
+    _sql_constraints = [
+        ("extra_field_unique",
+         "UNIQUE(field_name)",
+         "تنبيه .. نوع الحقل تم اضافتة مسبقا لا يمكن الاستمرار"),
+    ]
