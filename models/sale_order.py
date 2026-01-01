@@ -34,9 +34,9 @@ class SaleOrder(models.Model):
             configs = self.env['sale.extra.field.config'].search([])
 
             for c in configs:
-                if c.name in res['fields']:
-                    res['fields'][c.name]['string'] = c.custom_label or c.default_label
-                    res['fields'][c.name]['required'] = bool(c.required)
+                if c.field_name in res['fields']:
+                    res['fields'][c.field_name]['string'] =   c.label
+                    res['fields'][c.field_name]['required'] = bool(c.required)
 
         return res
 
