@@ -100,22 +100,23 @@ class SaleOrder(models.Model):
         'x_extra_boolean_1','x_extra_boolean_2','x_extra_boolean_3','x_extra_boolean_4','x_extra_boolean_5'
     )
     def _compute_extra_flags(self):
-        configs = self.env['sale.extra.field.config'].search([])
-        config_map = {c.field_name: c for c in configs}
+        all_fields = [
+            'x_extra_text_1','x_extra_text_2','x_extra_text_3','x_extra_text_4','x_extra_text_5',
+            'x_extra_number_1','x_extra_number_2','x_extra_number_3','x_extra_number_4','x_extra_number_5',
+            'x_extra_date_1','x_extra_date_2','x_extra_date_3','x_extra_date_4','x_extra_date_5',
+            'x_extra_boolean_1','x_extra_boolean_2','x_extra_boolean_3','x_extra_boolean_4','x_extra_boolean_5'
+        ]
+
+        configs = {c.field_name: c for c in self.env['sale.extra.field.config'].search([])}
 
         for rec in self:
-           
-            for fname, config in config_map.items():
-             
+            for fname in all_fields:
                 visible_field = f'{fname}_visible'
                 required_field = f'{fname}_required'
-                print("=====================visible_field +++++++++++",visible_field)
-                print("=====================required_field +++++++++++",required_field)
-                if visible_field in rec._fields:
-                    rec[visible_field] = bool(config.visible)
+                c = configs.get(fname)
+                rec[visible_field] = bool(c.visible) if c else False
+                rec[required_field] = bool(c.required) if c else False
 
-                if required_field in rec._fields:
-                    rec[required_field] = bool(config.required)
 
     # ======================
     # Fields view get: لتغيير الليبل
