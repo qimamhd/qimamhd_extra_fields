@@ -1,4 +1,4 @@
 # -*- coding: utf-8 -*-
 from . import extra_field
-from . import sale_order
+from . import so
 from . import account_move
