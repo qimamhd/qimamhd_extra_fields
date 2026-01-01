@@ -11,19 +11,26 @@ class SaleOrder(models.Model):
     x_extra_text_2 = fields.Char()
     x_extra_number_1 = fields.Float()
     x_extra_date_1 = fields.Date()
-    x_extra_char_1_visible = fields.Boolean(compute='_compute_extra_flags', store=False)
-    x_extra_char_1_required = fields.Boolean(compute='_compute_extra_flags', store=False)
-
-    @api.depends('x_extra_text_1')
+    extra_visible_map = fields.Serialized(
+        compute='_compute_extra_flags', store=False
+    )
+    extra_required_map = fields.Serialized(
+        compute='_compute_extra_flags', store=False
+    )
+   
+    @api.depends('id')
     def _compute_extra_flags(self):
         configs = self.env['sale.extra.field.config'].search([])
-        config_map = {c.field_name: c for c in configs}
+        visible_map = {}
+        required_map = {}
+
+        for c in configs:
+            visible_map[c.field_name] = bool(c.visible)
+            required_map[c.field_name] = bool(c.required)
 
         for rec in self:
-            c = config_map.get('x_extra_text_1')
-            rec.x_extra_char_1_visible = bool(c and c.visible)
-            rec.x_extra_char_1_required = bool(c and c.required)
-
+            rec.extra_visible_map = visible_map
+            rec.extra_required_map = required_map
 
     def _compute_extra_values(self):
         for order in self:
