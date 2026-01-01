@@ -7,30 +7,44 @@ from odoo.tools import DEFAULT_SERVER_DATETIME_FORMAT as DATETIME_FORMAT
 class SaleOrder(models.Model):
     _inherit = 'sale.order'
 
+   # Extra fields
     x_extra_text_1 = fields.Char()
     x_extra_text_2 = fields.Char()
     x_extra_number_1 = fields.Float()
     x_extra_date_1 = fields.Date()
-    extra_visible_map = fields.Serialized(
-        compute='_compute_extra_flags', store=False
-    )
-    extra_required_map = fields.Serialized(
-        compute='_compute_extra_flags', store=False
-    )
+    x_extra_boolean_1 = fields.Boolean()
+
+    # Helper fields
+    x_extra_text_1_visible = fields.Boolean(compute='_compute_extra_flags')
+    x_extra_text_1_required = fields.Boolean(compute='_compute_extra_flags')
+
+    x_extra_text_2_visible = fields.Boolean(compute='_compute_extra_flags')
+    x_extra_text_2_required = fields.Boolean(compute='_compute_extra_flags')
+
+    x_extra_number_1_visible = fields.Boolean(compute='_compute_extra_flags')
+    x_extra_number_1_required = fields.Boolean(compute='_compute_extra_flags')
+
+    x_extra_date_1_visible = fields.Boolean(compute='_compute_extra_flags')
+    x_extra_date_1_required = fields.Boolean(compute='_compute_extra_flags')
+
+    x_extra_boolean_1_visible = fields.Boolean(compute='_compute_extra_flags')
+    x_extra_boolean_1_required = fields.Boolean(compute='_compute_extra_flags')
    
     @api.depends('id')
     def _compute_extra_flags(self):
         configs = self.env['sale.extra.field.config'].search([])
-        visible_map = {}
-        required_map = {}
-
-        for c in configs:
-            visible_map[c.field_name] = bool(c.visible)
-            required_map[c.field_name] = bool(c.required)
+        config_map = {c.field_name: c for c in configs}
 
         for rec in self:
-            rec.extra_visible_map = visible_map
-            rec.extra_required_map = required_map
+            for field_name, config in config_map.items():
+                visible_field = f'{field_name}_visible'
+                required_field = f'{field_name}_required'
+
+                if visible_field in rec._fields:
+                    rec[visible_field] = bool(config.visible)
+
+                if required_field in rec._fields:
+                    rec[required_field] = bool(config.required)
 
     def _compute_extra_values(self):
         for order in self:
