@@ -53,40 +53,41 @@
                         <field name="x_extra_boolean_4_required" invisible="1"/>
                         <field name="x_extra_boolean_5_required" invisible="1"/>
 						<group>
+						     <!-- TEXT -->
 							<field name="x_extra_text_1" attrs="{'invisible':[('x_extra_text_1_visible','=',False)],'required':[('x_extra_text_1_required','=',True)]}"/>
 							<field name="x_extra_text_2" attrs="{'invisible':[('x_extra_text_2_visible','=',False)],'required':[('x_extra_text_2_required','=',True)]}"/>
 							<field name="x_extra_text_3" attrs="{'invisible':[('x_extra_text_3_visible','=',False)],'required':[('x_extra_text_3_required','=',True)]}"/>
 							<field name="x_extra_text_4" attrs="{'invisible':[('x_extra_text_4_visible','=',False)],'required':[('x_extra_text_4_required','=',True)]}"/>
 							<field name="x_extra_text_5" attrs="{'invisible':[('x_extra_text_5_visible','=',False)],'required':[('x_extra_text_5_required','=',True)]}"/>
+							<!-- NUMBER -->
+							<field name="x_extra_number_1" attrs="{'invisible':[('x_extra_number_1_visible','=',False)],'required':[('x_extra_number_1_required','=',True)]}"/>
+							<field name="x_extra_number_2" attrs="{'invisible':[('x_extra_number_2_visible','=',False)],'required':[('x_extra_number_2_required','=',True)]}"/>
+							<field name="x_extra_number_3" attrs="{'invisible':[('x_extra_number_3_visible','=',False)],'required':[('x_extra_number_3_required','=',True)]}"/>
+							<field name="x_extra_number_4" attrs="{'invisible':[('x_extra_number_4_visible','=',False)],'required':[('x_extra_number_4_required','=',True)]}"/>
+							<field name="x_extra_number_5" attrs="{'invisible':[('x_extra_number_5_visible','=',False)],'required':[('x_extra_number_5_required','=',True)]}"/>
 
 
 						</group>
 						<group>
 
+							<!-- DATE -->
+							<field name="x_extra_date_1" attrs="{'invisible':[('x_extra_date_1_visible','=',False)],'required':[('x_extra_date_1_required','=',True)]}"/>
+							<field name="x_extra_date_2" attrs="{'invisible':[('x_extra_date_2_visible','=',False)],'required':[('x_extra_date_2_required','=',True)]}"/>
+							<field name="x_extra_date_3" attrs="{'invisible':[('x_extra_date_3_visible','=',False)],'required':[('x_extra_date_3_required','=',True)]}"/>
+							<field name="x_extra_date_4" attrs="{'invisible':[('x_extra_date_4_visible','=',False)],'required':[('x_extra_date_4_required','=',True)]}"/>
+							<field name="x_extra_date_5" attrs="{'invisible':[('x_extra_date_5_visible','=',False)],'required':[('x_extra_date_5_required','=',True)]}"/>
+
+							<!-- BOOLEAN -->
+							<field name="x_extra_boolean_1" attrs="{'invisible':[('x_extra_boolean_1_visible','=',False)],'required':[('x_extra_boolean_1_required','=',True)]}"/>
+							<field name="x_extra_boolean_2" attrs="{'invisible':[('x_extra_boolean_2_visible','=',False)],'required':[('x_extra_boolean_2_required','=',True)]}"/>
+							<field name="x_extra_boolean_3" attrs="{'invisible':[('x_extra_boolean_3_visible','=',False)],'required':[('x_extra_boolean_3_required','=',True)]}"/>
+							<field name="x_extra_boolean_4" attrs="{'invisible':[('x_extra_boolean_4_visible','=',False)],'required':[('x_extra_boolean_4_required','=',True)]}"/>
+							<field name="x_extra_boolean_5" attrs="{'invisible':[('x_extra_boolean_5_visible','=',False)],'required':[('x_extra_boolean_5_required','=',True)]}"/>
 
 						</group>
-                        <!-- TEXT -->
+                   
                       
-                        <!-- NUMBER -->
-                        <field name="x_extra_number_1" attrs="{'invisible':[('x_extra_number_1_visible','=',False)],'required':[('x_extra_number_1_required','=',True)]}"/>
-                        <field name="x_extra_number_2" attrs="{'invisible':[('x_extra_number_2_visible','=',False)],'required':[('x_extra_number_2_required','=',True)]}"/>
-                        <field name="x_extra_number_3" attrs="{'invisible':[('x_extra_number_3_visible','=',False)],'required':[('x_extra_number_3_required','=',True)]}"/>
-                        <field name="x_extra_number_4" attrs="{'invisible':[('x_extra_number_4_visible','=',False)],'required':[('x_extra_number_4_required','=',True)]}"/>
-                        <field name="x_extra_number_5" attrs="{'invisible':[('x_extra_number_5_visible','=',False)],'required':[('x_extra_number_5_required','=',True)]}"/>
-
-                        <!-- DATE -->
-                        <field name="x_extra_date_1" attrs="{'invisible':[('x_extra_date_1_visible','=',False)],'required':[('x_extra_date_1_required','=',True)]}"/>
-                        <field name="x_extra_date_2" attrs="{'invisible':[('x_extra_date_2_visible','=',False)],'required':[('x_extra_date_2_required','=',True)]}"/>
-                        <field name="x_extra_date_3" attrs="{'invisible':[('x_extra_date_3_visible','=',False)],'required':[('x_extra_date_3_required','=',True)]}"/>
-                        <field name="x_extra_date_4" attrs="{'invisible':[('x_extra_date_4_visible','=',False)],'required':[('x_extra_date_4_required','=',True)]}"/>
-                        <field name="x_extra_date_5" attrs="{'invisible':[('x_extra_date_5_visible','=',False)],'required':[('x_extra_date_5_required','=',True)]}"/>
-
-                        <!-- BOOLEAN -->
-                        <field name="x_extra_boolean_1" attrs="{'invisible':[('x_extra_boolean_1_visible','=',False)],'required':[('x_extra_boolean_1_required','=',True)]}"/>
-                        <field name="x_extra_boolean_2" attrs="{'invisible':[('x_extra_boolean_2_visible','=',False)],'required':[('x_extra_boolean_2_required','=',True)]}"/>
-                        <field name="x_extra_boolean_3" attrs="{'invisible':[('x_extra_boolean_3_visible','=',False)],'required':[('x_extra_boolean_3_required','=',True)]}"/>
-                        <field name="x_extra_boolean_4" attrs="{'invisible':[('x_extra_boolean_4_visible','=',False)],'required':[('x_extra_boolean_4_required','=',True)]}"/>
-                        <field name="x_extra_boolean_5" attrs="{'invisible':[('x_extra_boolean_5_visible','=',False)],'required':[('x_extra_boolean_5_required','=',True)]}"/>
+                       
                     </group>
                 </page>
             </xpath>
