@@ -109,8 +109,8 @@ class SaleOrder(models.Model):
              
                 visible_field = f'{fname}_visible'
                 required_field = f'{fname}_required'
-                print("=====================visible_field +++++++++++")
-                print("=====================required_field +++++++++++")
+                print("=====================visible_field +++++++++++",visible_field)
+                print("=====================required_field +++++++++++",required_field)
                 if visible_field in rec._fields:
                     rec[visible_field] = bool(config.visible)
 
