@@ -25,19 +25,18 @@ class SaleOrder(models.Model):
                     order[field.name] = False
 
 
+
     @api.model
     def fields_view_get(self, view_id=None, view_type='form', toolbar=False, submenu=False):
         res = super().fields_view_get(view_id, view_type, toolbar, submenu)
 
         if view_type == 'form':
-            settings = self.env['extra.field.setting'].search([])
-            for s in settings:
-                if s.field_name in res['fields']:
-                    res['fields'][s.field_name]['string'] = (
-                        s.label or res['fields'][s.field_name]['string']
-                    )
-                    res['fields'][s.field_name]['required'] = s.required
-                    res['fields'][s.field_name]['invisible'] = not s.visible
+            configs = self.env['sale.extra.field.config'].search([])
+
+            for c in configs:
+                if c.name in res['fields']:
+                    res['fields'][c.name]['string'] = c.custom_label or c.default_label
+                    res['fields'][c.name]['required'] = bool(c.required)
 
         return res
 
