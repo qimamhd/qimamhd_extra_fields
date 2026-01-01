@@ -110,6 +110,7 @@ class SaleOrder(models.Model):
     x_extra_boolean_5_visible = fields.Boolean(compute='_compute_extra_flags')
     x_extra_boolean_5_required = fields.Boolean(compute='_compute_extra_flags')
  
+    @api.depends('x_extra_text_1')
     def _compute_extra_flags(self):
         configs = self.env['sale.extra.field.config'].search([])
         config_map = {c.field_name: c for c in configs}
@@ -129,8 +130,7 @@ class SaleOrder(models.Model):
     @api.model
     def fields_view_get(self, view_id=None, view_type='form', toolbar=False, submenu=False):
         res = super().fields_view_get(view_id, view_type, toolbar, submenu)
-        res._compute_extra_flags()
-
+ 
         if view_type == 'form':
             configs = self.env['sale.extra.field.config'].search([])
 
