@@ -8,7 +8,10 @@
 			<xpath expr="//notebook" position="inside">
 				<page string="Extra Fields" name="extra_fields_tab">
 					<group>
-						<field name="x_extra_text_1"/>
+						<field name="x_extra_char_1_visible" invisible="1"/>
+						<field name="x_extra_char_1_required" invisible="1"/>
+						<field name="x_extra_text_1"  attrs="{'invisible':[('x_extra_char_1_visible','=',False)],
+															'required':[('x_extra_char_1_required','=',True)]}"/>
 						<field name="x_extra_text_2"/>
 						<field name="x_extra_number_1"/>
 						<field name="x_extra_date_1"/>

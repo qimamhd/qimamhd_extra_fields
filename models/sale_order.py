@@ -12,6 +12,19 @@ class SaleOrder(models.Model):
     x_extra_text_2 = fields.Char()
     x_extra_number_1 = fields.Float()
     x_extra_date_1 = fields.Date()
+    x_extra_char_1_visible = fields.Boolean(compute='_compute_extra_flags', store=False)
+    x_extra_char_1_required = fields.Boolean(compute='_compute_extra_flags', store=False)
+
+
+    def _compute_extra_flags(self):
+        configs = self.env['sale.extra.field.config'].search([])
+        config_map = {c.field_name: c for c in configs}
+
+        for rec in self:
+            c = config_map.get('x_extra_text_1')
+            rec.x_extra_char_1_visible = bool(c and c.visible)
+            rec.x_extra_char_1_required = bool(c and c.required)
+
 
     def _compute_extra_values(self):
         for order in self:
