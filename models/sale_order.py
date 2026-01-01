@@ -104,6 +104,7 @@ class SaleOrder(models.Model):
         config_map = {c.field_name: c for c in configs}
 
         for rec in self:
+            print("=====================x_extra_text_2_visible +++++++++++")
             for fname, config in config_map.items():
                 visible_field = f'{fname}_visible'
                 required_field = f'{fname}_required'
